@@ -1,0 +1,83 @@
+{%  extends "tpl/visual.tpl.html" %}
+    {% block echartview%}
+<link rel="stylesheet" href="css/bootstrap-combined.css" rel="stylesheet" media="screen"/>
+	<script>
+        function loadFunConfig(name)
+	{
+        var src= "DegradationOfBearings.html?file=" + name;
+        console.log(src);
+		window.open(src,'_self');
+	}
+    </script>
+
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span3">
+			<div class="accordion" id="accordion-506365">
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						 <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-506365" href="#accordion-element-11">特征降维 </a>
+					</div>
+					<div id="accordion-element-11" class="accordion-body collapse">
+						<div class="accordion-inner" onclick="loadFunConfig('fisher')">
+							Fisher判距
+						</div>
+					</div>
+				</div>
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						 <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-506365" href="#accordion-element-12">特征选取</a>
+					</div>
+					<div id="accordion-element-12" class="accordion-body collapse">
+						<div class="accordion-inner" onclick="loadFunConfig('scatter')">
+							选取特征维度
+						</div>
+					</div>
+				</div>
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						 <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-506365" href="#accordion-element-13">聚类分析</a>
+					</div>
+					<div id="accordion-element-13" class="accordion-body collapse">
+						<div class="accordion-inner">
+							选取聚类数目
+						</div>
+					</div>
+				</div>
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						 <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-506365" href="#accordion-element-14">状态识别</a>
+					</div>
+					<div id="accordion-element-14" class="accordion-body collapse">
+						<div class="accordion-inner">
+							状态中心获取
+						</div>
+					</div>
+				</div>
+
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						 <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-506365" href="#accordion-element-15">距离分析</a>
+					</div>
+					<div id="accordion-element-15" class="accordion-body collapse">
+						<div class="accordion-inner">
+							欧氏距离
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div class="span9">
+			<div class="row-fluid" id ="paraview">
+                {% ifequal view "main" %}
+                    {% include  file %}
+                {% endifequal %}
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+    {% endblock %}

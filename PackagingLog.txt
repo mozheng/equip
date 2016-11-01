@@ -1,0 +1,10 @@
+ant:
+<ant>
+  <mkdir dir="D:\Untitled\for_redistribution" />
+  <mkdir dir="D:\Untitled\for_testing" />
+  <mkdir dir="D:\Untitled\for_redistribution_files_only" />
+</ant>
+mcc -W lib:Untitled -T link:lib -d D:\Untitled\for_testing -v D:\Untitled.m 
+Test checkout of feature 'Compiler' failed.
+
+mcc Ê§°Ü¡£

@@ -1,0 +1,89 @@
+
+	<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="Emain" style="width: 600px;height:400px;"></div>
+    
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <script src="js/echarts.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('Emain'));
+
+        // 指定图表的配置项和数据
+        option = {
+        	title : {
+		        text: '主要特征时序映射'
+		    },
+		    tooltip : {
+		        trigger: 'axis',
+		        showDelay : 0,
+		        axisPointer:{
+		            show: true,
+		            type : 'cross',
+		            lineStyle: {
+		                type : 'dashed',
+		                width : 1
+		            }
+		        },
+		        zlevel: 1
+		    },
+		    legend: {
+		        data:['主要特征']
+		    },
+		    toolbox: {
+		        show : true,
+		        feature : {
+		            mark : {show: true},
+		            dataZoom : {show: true},
+		            dataView : {show: true, readOnly: false},
+		            restore : {show: true},
+		            saveAsImage : {show: true}
+		        }
+		    },
+		    xAxis : [
+		        {
+		            type : 'value',
+		            scale:true
+		        }
+		    ],
+		    yAxis : [
+		        {
+		            type : 'value',
+		            scale:true
+		        }
+		    ],
+		    visualMap: {
+		    	type:'continuous',
+		    	min: 0,
+		    	max: 255,
+		    	text: ['High','Low'],
+		    	realtime: false,
+		    	calculable: true,
+		    	dimension:2,
+		    	color:['orangered','yellow','lightskyblue']
+		    },
+		    series : [
+		        {
+		            name:'主要特征',
+		            type:'scatter',
+		            large: true,
+		            symbolSize: 10,	//散点的大小 default:3
+		            data: []
+		        }
+		    ]
+		};
+
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+        
+        //异步加载数据
+		$.getJSON('data/scatter_data.json').done(function(data){
+			//填入数据
+			myChart.setOption({
+				series: [{
+					data : data.data
+				}]
+			});
+		});
+    </script>
+
